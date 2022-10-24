@@ -8,8 +8,11 @@ jobs:
       - name: code checkout
         uses: actions/checkout@v2
       - name: running sitespeed.io container with arguments and optional Docker options
-        run: sitespeed.io Demo.js --multi --html.pageSummaryMetrics -n1 
-      - name: Download container
-        uses: ishworkh/docker-container-artifact-download@v1
+        run: docker run --rm -v "$(pwd):/sitespeed.io" sitespeedio/sitespeed.io:latest Demo.js --multi --html.pageSummaryMetrics -n1 
+      - name: Docker Image Artifact Download
+        # You may pin to the exact commit or the version.
+        # uses: ishworkh/docker-image-artifact-download@a88e9adfcb7add4c13f495c159a963ed8ec1b95a
+        uses: ishworkh/docker-image-artifact-download@v1
         with:
-          path: ./Reports
+          image: sitespeed.io:latest
+          path: ./Result
