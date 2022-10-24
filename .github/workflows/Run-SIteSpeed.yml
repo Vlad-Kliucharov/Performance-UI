@@ -9,3 +9,8 @@ jobs:
         uses: actions/checkout@v2
       - name: running sitespeed.io container with arguments and optional Docker options
         run: docker run --rm -v "$(pwd):/sitespeed.io" sitespeedio/sitespeed.io:latest Demo.js --multi --browsertime.visualMetrics true --browsertime.video true --html.pageSummaryMetrics -n1 
+      - name: Download a Build Artifact
+        uses: actions/upload-artifact@v3.1.1
+        with:
+          name: sitespeed
+          path: ./Result
