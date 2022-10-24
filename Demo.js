@@ -3,8 +3,8 @@ module.exports = async function(context, commands) {
     await commands.navigate('https://en.wikipedia.org/w/index.php?title=Special:UserLogin&returnto=Main+Page')
 
     // Add text into an input field, finding the field by id
-    await commands.addText.byId('login', 'michoelkydon')
-    await commands.addText.byId('password', 'cFFjHF3*J@-7Sbv')
+    await commands.addText.byId('michoelkydon', 'wpName1')
+    await commands.addText.byId('cFFjHF3*J@-7Sbv', 'wpPassword1')
 
     await commands.measure.start('login')
     await commands.click.byIdAndWait('wpLoginAttempt')
