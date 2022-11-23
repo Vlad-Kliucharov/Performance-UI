@@ -8,18 +8,8 @@ jobs:
       - name: code checkout
         uses: actions/checkout@v2
       - name: running sitespeed.io container with arguments and optional Docker options
-        run: docker run --rm -v "$(pwd):/sitespeed.io" sitespeedio/sitespeed.io:latest Demo.js --multi --html.pageSummaryMetrics -n1 
-
-      - name: Checkout project
-        uses: actions/checkout@v2
-      - name: Build image
-        run: |
-          docker build -t test_image:latest -<<EOF
-          FROM busybox
-          RUN touch abc.txt
-          EOF
-
-      - name: Upload image
-        uses: ishworkh/docker-image-artifact-upload@v1
+        run: docker run --rm -v "$(pwd):/sitespeed.io" sitespeedio/sitespeed.io:latest Demo.js --multi -n1 
+      - name: Download a Build Artifact
+        uses: actions/download-artifact@v3.0.1
         with:
-          image: "test_image:latest"
+          name: result
