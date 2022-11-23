@@ -12,7 +12,7 @@ jobs:
       - name: Step 3 - Code checkout
         uses: actions/checkout@v3
       - name: Step 4 - Running sitespeed.io container
-        run: docker run --rm -v "$(pwd):/sitespeed.io" sitespeedio/sitespeed.io:latest Demo.js -n1
+        run: docker run --rm -v "$(pwd):/sitespeed.io" sitespeedio/sitespeed.io:latest Demo.js --multi -n1
       - name: Step 3 - Use the Upload Artifact GitHub Action
         uses: actions/upload-artifact@v3
         with: 
