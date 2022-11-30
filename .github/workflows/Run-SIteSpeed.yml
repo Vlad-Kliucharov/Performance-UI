@@ -5,13 +5,7 @@ jobs:
     runs-on: ubuntu-latest
     name: running sitespeed.io
     steps:
-      - name: Setup InfluxDB
-        uses: influxdata/influxdb-action@v3
-        with:
-          influxdb_version: 1.8.4-alpine
-          influxdb_org: influxdata
-          influxdb_user: ci_user
-          influxdb_password: password
-          influxdb_bucket: dummy
+      - name: code checkout
+        uses: actions/checkout@v3
       - name: Running sitespeed.io container
         run: docker run --shm-size=1g --rm -v "$(WORKSPACE):/sitespeed.io" sitespeedio/sitespeed.io:latest Demo.js --outputFolder output/report --network=my-net --influxdb.host 192.168.0.33 --influxdb.port 8086 --influxdb.database --influxdb.username admin --influxdb.password Welcome1 siteSpeedDB --multi --browsertime.visualMetrics true -n1 --influxdb.tags category=test,date=11_28_2022
