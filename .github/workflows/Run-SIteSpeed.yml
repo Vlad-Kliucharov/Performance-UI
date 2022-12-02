@@ -7,8 +7,8 @@ jobs:
     steps:
       - name: code checkout
         uses: actions/checkout@v3
-      - name: Test Connectivity
-        run: |
-          ping -c 10 192.168.56.1
-#       - name: Running sitespeed.io container
-#         run: docker run --shm-size=1g --rm -v "$(pwd):/sitespeed.io" sitespeedio/sitespeed.io:latest Demo.js --network=my-net --influxdb.host 192.168.56.1 --influxdb.port 8086 --influxdb.database siteSpeedDB --multi --browsertime.visualMetrics true -n1 --influxdb.tags category=test,date=12_01_2022
+#       - name: Test Connectivity
+#         run: |
+#           ping -c 10 192.168.56.1
+      - name: Running sitespeed.io container
+        run: docker run --shm-size=1g --rm -p 8086:8086 -v "$(WORKSPACE):/sitespeed.io" sitespeedio/sitespeed.io:latest Demo.js --network=my-net --influxdb.host 192.168.56.1 --influxdb.port 8086 --influxdb.database siteSpeedDB --multi --browsertime.visualMetrics true -n1 --influxdb.tags category=test,date=12_01_2022
