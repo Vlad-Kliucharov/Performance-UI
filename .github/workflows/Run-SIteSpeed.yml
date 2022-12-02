@@ -5,10 +5,18 @@ jobs:
     runs-on: ubuntu-latest
     name: running sitespeed.io
     steps:
-      - name: code checkout
-        uses: actions/checkout@v3
+    - name: Check out repo
+      uses: actions/checkout@v3
+    - name: Setup InfluxDB
+      uses: influxdata/influxdb-action@v3
+      with:
+        influxdb_version: 1.8.4
+        influxdb_org: influxdata
+        influxdb_user: ci_user
+        influxdb_password: password
+        influxdb_bucket: dummy
 #       - name: Test Connectivity
 #         run: |
 #           ping -c 10 192.168.56.1
-      - name: Running sitespeed.io container
-        run: docker run --shm-size=1g --rm -p 8086:8086 -v "$(pwd):/sitespeed.io" sitespeedio/sitespeed.io:latest Demo.js --network=my-net --influxdb.host 192.168.56.1 --influxdb.port 8086 --influxdb.database siteSpeedDB --multi --browsertime.visualMetrics true -n1 --influxdb.tags category=test,date=12_01_2022
+    - name: Running sitespeed.io container
+      run: docker run --shm-size=1g --rm -p 8086:8086 -v "$(pwd):/sitespeed.io" sitespeedio/sitespeed.io:latest Demo.js --influxdb.database dummy --multi --browsertime.visualMetrics true -n1 --influxdb.tags category=test,date=12_01_2022
