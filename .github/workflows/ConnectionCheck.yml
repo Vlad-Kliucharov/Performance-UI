@@ -5,6 +5,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Check connection - 1
-        ping -10 172.20.48.1
+        run:
+        ping 172.20.48.1
     - name: Check connection - 2
-        ping -10 192.168.0.33
+        run:
+        ping 192.168.0.33
