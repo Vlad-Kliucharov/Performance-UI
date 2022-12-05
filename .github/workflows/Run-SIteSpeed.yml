@@ -7,8 +7,5 @@ jobs:
     steps:
     - name: Check out repo
       uses: actions/checkout@v3
-    - name: Test Connectivity
-      run: |
-        ping -c 10 192.168.0.33
-   # - name: Running sitespeed.io container
-    #  run: docker run --shm-size=1g --rm -p 8086:8086 -v "$(pwd):/sitespeed.io" sitespeedio/sitespeed.io:latest Demo.js --influxdb.database dummy --multi --browsertime.visualMetrics true -n1 --influxdb.tags category=test,date=12_05_2022
+    - name: Running sitespeed.io container
+      run: docker run --rm -p 8086:8086 -v "$(pwd):/sitespeed.io" sitespeedio/sitespeed.io:latest Demo.js --influxdb.host 192.168.0.33 --influxdb.port 8086 --influxdb.username admin --influxdb.Welcome1 --influxdb.database siteSpeedDB --multi --browsertime.visualMetrics true -n1 --influxdb.tags category=test,date=12_05_2022
