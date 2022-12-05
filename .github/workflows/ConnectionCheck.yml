@@ -8,5 +8,5 @@ jobs:
     - name: Check out repo
       uses: actions/checkout@v3
       run:
-      ping -10 172.20.48.1 
-      ping -10 192.168.0.33
+        ping -10 172.20.48.1 
+        ping -10 192.168.0.33
