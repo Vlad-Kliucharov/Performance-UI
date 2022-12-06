@@ -8,8 +8,8 @@ jobs:
     - name: Check out repo
       uses: actions/checkout@v3
     - name: Setup SSH Action
-      uses: ZoMa-Toys/zoma-ssh@v1.1
+      uses: GPTED/SSH-My-Action@0.1
       with:
-        key: ${{ secrets.M_SECRET }}
-        host: 192.168.0.94
-        cmd: docker run --rm -v "$(pwd):/sitespeed.io" sitespeedio/sitespeed.io:latest Demo.js --influxdb.host 192.168.0.94 --influxdb.port 8086 --influxdb.username admin --influxdb.password Welcome1 --influxdb.database siteSpeed --multi --browsertime.visualMetrics true -n1 --influxdb.tags category=test,date=12_05_2022
+        PRIVATE_KEY: ${{ secrets.M_SECRET }}
+        HOST: 192.168.0.94
+        CMD: docker run --rm -v "$(pwd):/sitespeed.io" sitespeedio/sitespeed.io:latest Demo.js --influxdb.host 192.168.0.94 --influxdb.port 8086 --influxdb.username admin --influxdb.password Welcome1 --influxdb.database siteSpeed --multi --browsertime.visualMetrics true -n1 --influxdb.tags category=test,date=12_05_2022
