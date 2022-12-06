@@ -12,5 +12,7 @@ jobs:
       with:
         SSHKEY: ${{ secrets.M_SECRET }}
         NAME: 192.168.0.94
-    - name: Running sitespeed.io container
-      run: docker run --rm -v "$(pwd):/sitespeed.io" sitespeedio/sitespeed.io:latest Demo.js --influxdb.host 192.168.0.94 --influxdb.port 8086 --influxdb.username admin --influxdb.password Welcome1 --influxdb.database siteSpeed --multi --browsertime.visualMetrics true -n1 --influxdb.tags category=test,date=12_05_2022
+        run: docker run --rm -v "$(pwd):/sitespeed.io" sitespeedio/sitespeed.io:latest Demo.js --influxdb.host 192.168.0.94 --influxdb.port 8086 --influxdb.username admin --influxdb.password Welcome1 --influxdb.database siteSpeed --multi --browsertime.visualMetrics true -n1 --influxdb.tags category=test,date=12_05_2022
+
+#     - name: Running sitespeed.io container
+#       run: docker run --rm -v "$(pwd):/sitespeed.io" sitespeedio/sitespeed.io:latest Demo.js --influxdb.host 192.168.0.94 --influxdb.port 8086 --influxdb.username admin --influxdb.password Welcome1 --influxdb.database siteSpeed --multi --browsertime.visualMetrics true -n1 --influxdb.tags category=test,date=12_05_2022
