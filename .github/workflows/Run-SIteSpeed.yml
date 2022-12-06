@@ -12,4 +12,4 @@ jobs:
       with:
         key: ${{ secrets.M_SECRET }}
         host: 192.168.0.94
-        command: docker run --rm -v "$(pwd):/sitespeed.io" sitespeedio/sitespeed.io:latest Demo.js --multi --browsertime.visualMetrics true -n1 --influxdb.tags category=test,date=12_05_2022
+        command: docker run --rm -v "$(pwd):/sitespeed.io" sitespeedio/sitespeed.io:latest Demo.js --influxdb.host 192.168.0.94 --influxdb.port 8086 --influxdb.database siteSpeed --multi --browsertime.visualMetrics true -n1 --influxdb.tags category=test,date=12_05_2022
