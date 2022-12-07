@@ -14,6 +14,8 @@ jobs:
         username: ${{ secrets.M_USERNAME }}
         key: ${{ secrets.M_KEY_ED25519 }}
         passphrase: ${{ secrets.M_PHRASE }}
-        script: sh """docker run --rm -v "$(pwd):/sitespeed.io" sitespeedio/sitespeed.io:latest Demo.js --multi --browsertime.visualMetrics true -n1"""
+        script: |
+          cd script/
+          sh """docker run --rm -v "$(pwd):/sitespeed.io" sitespeedio/sitespeed.io:latest Demo.js --multi --browsertime.visualMetrics true -n1"""
 #     - name: Running sitespeed.io container
 #       run: docker run --rm -v "$(pwd):/sitespeed.io" sitespeedio/sitespeed.io:latest Demo.js --influxdb.host ${{ secrets.M_HOST }} --influxdb.port 8086 --influxdb.username ${{ secrets.M_USER_DB }} --influxdb.password ${{ secrets.M_PASSWORD_DB }} --influxdb.database ${{ secrets.DB_NAME }} --multi --browsertime.visualMetrics true -n1 --influxdb.tags category=test,date=12_05_2022
