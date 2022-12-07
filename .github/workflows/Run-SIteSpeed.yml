@@ -3,7 +3,7 @@ on: push
 jobs:
   run-sitespeed:
     runs-on: ubuntu-latest
-    name: Build
+    name: Build command
     steps:
     - name: Check out repo
       uses: actions/checkout@v3
