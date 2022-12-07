@@ -12,7 +12,6 @@ jobs:
       with:
         host: ${{ secrets.M_HOST }}
         username: ${{ secrets.M_USERNAME }}
-        password: ${{ secrets.M_HOSTPASS }}
         key: ${{ secrets.M_KEY_ED25519 }}
         passphrase: ${{ secrets.M_PHRASE }}
         port: ${{ secrets.M_PORT }}
