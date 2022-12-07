@@ -10,11 +10,9 @@ jobs:
     - name: executing remote ssh commands using password
       uses: appleboy/ssh-action@master
       with:
-        host: 192.168.0.94
+        host: ${{ M_HOST }}
         key: ${{ secrets.M_SECRET }}
-        passphrase: bowheadpanter8
-        script: |
-          whoami
-          ls
-#     - name: Running sitespeed.io container
-#       run: docker run --rm -v "$(pwd):/sitespeed.io" sitespeedio/sitespeed.io:latest Demo.js --influxdb.host 192.168.0.94 --influxdb.port 8086 --influxdb.database siteSpeed --multi --browsertime.visualMetrics true -n1 --influxdb.tags category=test,date=12_05_2022
+        passphrase: ${{ M_PHRASE }}
+    - name: Running sitespeed.io container
+      run: docker run --rm -v "$(pwd):/sitespeed.io" sitespeedio/sitespeed.io:latest Demo.js --influxdb.host ${{ M_HOST }} --influxdb.port 8086 --influxdb.username ${{ M_USER_DB }} --influxdb.password ${{ M_PASSWORD_DB }} --influxdb.database ${{ DB_NAME }} --multi --browsertime.visualMetrics true -n1 --influxdb.tags category=test,date=12_05_2022
+      
