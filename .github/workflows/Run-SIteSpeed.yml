@@ -10,9 +10,9 @@ jobs:
     - name: Install SSH Key
       uses: shimataro/ssh-key-action@v2
       with:
-        key: ${{ secrets.SSH_PRIVATE_KEY }} 
+        key: ${{ secrets.M_SSH_PRIVATE_KEY }} 
         known_hosts: 'just-a-placeholder-so-we-dont-get-errors'
     - name: Adding Known Hosts
-      run: ssh-keyscan -H ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts
+      run: ssh-keyscan -H ${{ secrets.M_HOST }} >> ~/.ssh/known_hosts
 #     - name: Running sitespeed.io container
 #       run: docker run --rm -v "$(pwd):/sitespeed.io" sitespeedio/sitespeed.io:latest Demo.js --influxdb.host ${{ secrets.M_HOST }} --influxdb.port 8086 --influxdb.username ${{ secrets.M_USER_DB }} --influxdb.password ${{ secrets.M_PASSWORD_DB }} --influxdb.database ${{ secrets.DB_NAME }} --multi --browsertime.visualMetrics true -n1 --influxdb.tags category=test,date=12_05_2022
